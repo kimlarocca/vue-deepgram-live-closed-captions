@@ -45,4 +45,4 @@ Start the server on production:
 node .output/server/index.mjs
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.# vue-deepgram-live-closed-captions
