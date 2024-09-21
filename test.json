@@ -1,0 +1,37 @@
+{
+    "type": "Results",
+    "channel_index": [
+        0,
+        1
+    ],
+    "duration": 2.51,
+    "start": 0.0,
+    "is_final": true,
+    "speech_final": true,
+    "channel": {
+        "alternatives": [
+            {
+                "transcript": "hello",
+                "confidence": 0.9248047,
+                "words": [
+                    {
+                        "word": "hello",
+                        "start": 1.1328125,
+                        "end": 1.6328125,
+                        "confidence": 0.9248047
+                    }
+                ]
+            }
+        ]
+    },
+    "metadata": {
+        "request_id": "4b9acccb-b30d-487d-ab5e-e9be76329042",
+        "model_info": {
+            "name": "general",
+            "version": "2024-01-26.8851",
+            "arch": "base"
+        },
+        "model_uuid": "1ed36bac-f71c-4f3f-a31f-02fd6525c489"
+    },
+    "from_finalize": false
+}
