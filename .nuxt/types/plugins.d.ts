@@ -23,6 +23,7 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/@nuxtjs/supabase/dist/runtime/plugins/supabase.server.mjs").default> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/dev-server-logs.js").default> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/check-if-layout-used.js").default> &
+  InjectionType<typeof import("../../plugins/Vue3Lottie.client").default> &
   InjectionType<typeof import("../../plugins/gtag.client.js").default> &
   InjectionType<typeof import("../../plugins/primevue.js").default> &
   InjectionType<typeof import("../../plugins/sentry.client.js").default>

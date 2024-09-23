@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   app: {
     head: {
-      title: 'Swift Captions | Zero To Live Closed Captions In Minutes',
+      title: 'Swift Captions! Zero To Live Closed Captions In Minutes',
       htmlAttrs: {
         lang: 'en',
       },

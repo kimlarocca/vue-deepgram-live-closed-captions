@@ -30,19 +30,20 @@ a:active {
   transition: var(--transition);
 
   &:hover {
-    background-color: var(--white);
-    border-bottom: solid 1px var(--white);
-    border-radius: var(--border-radius);
-    margin: 0 -6px;
-    padding: 0 6px;
+    color: var(--link-color-hover);
+    border-bottom: solid 1px var(--link-color-hover);
   }
 
   &.plain {
     border-bottom: none;
     text-decoration: none;
+    background: none;
     &:hover {
       text-decoration: none;
       border-bottom: none;
+      background: none;
+      margin: 0;
+      padding: 0;
     }
   }
 

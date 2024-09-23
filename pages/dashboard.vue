@@ -2,7 +2,7 @@
   <div class="container p-4">
     <Html lang="en">
       <Head>
-        <Title>Swift Captions | Live Transcription</Title>
+        <Title>Swift Captions! Live Transcription</Title>
       </Head>
     </Html>
     <h1 class="mb-4">Live Transcription</h1>

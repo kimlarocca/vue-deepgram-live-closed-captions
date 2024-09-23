@@ -25,7 +25,13 @@
         </nuxt-link>
       </div>
       <div class="col col-12 lg:col-3">
-        <SupabaseLoginWithEmail />
+        <client-only>
+          <Vue3Lottie
+            animationLink="/lottie/CircleWave.json"
+            width="100%"
+            :height="500"
+          />
+        </client-only>
       </div>
     </div>
   </div>
@@ -46,3 +52,10 @@ if ( user?.data?.user ) {
   currentUser.value = session?.data?.session?.user
 }
 </script>
+
+<style lang="scss" scoped>
+.lottie-animation-container {
+  margin: -70px -70px 0 0;
+  opacity: 0.75;
+}
+</style>

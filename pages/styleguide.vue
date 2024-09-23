@@ -2,7 +2,7 @@
   <div class="styleguide container p-4">
     <Html lang="en">
       <Head>
-        <Title>Swift Captions | Styleguide</Title>
+        <Title>Swift Captions! Styleguide</Title>
       </Head>
     </Html>
     <h1>Styleguide</h1>

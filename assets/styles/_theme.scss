@@ -40,7 +40,8 @@ $max: 7680px;
     --yellow: #ffefdb;
     --purple: #7f7caf;
 
-    --link-color: var(--dark-blue);
+    --link-color: var(--dark-pink);
+    --link-color-hover: var(--black);
     --background-color: #ffffff;
     --text-color: var(--black);
     --text-color-secondary: var(--black);
@@ -6424,6 +6425,7 @@ $max: 7680px;
 }
 .p-avatar.p-avatar-lg .p-avatar-icon {
     font-size: 1.5rem;
+    color: var(--white);
 }
 .p-avatar.p-avatar-xl {
     width: 4rem;

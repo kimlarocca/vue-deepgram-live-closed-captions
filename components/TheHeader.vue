@@ -5,44 +5,54 @@
         <Logo />
       </nuxt-link>
       <div class="flex align-items-center">
-        <!-- <i
-          class="pi pi-bars text-xl p-1 cursor-pointer mr-1"
-          @click="visible = true"
-        /> -->
-        <nuxt-link to="/login" class="plain mr-2">
-          <Button label="sign up" class="block p-button-outlined" />
-        </nuxt-link>
-        <nuxt-link
-          to="/settings"
-          class="plain white clickable"
-          aria-label="manage profile"
-        >
-          <Avatar
-            v-if="currentUserProfile && currentUserProfile.avatar_url"
-            :image="currentUserProfile.avatar_url"
-            shape="circle"
-            size="large"
-            aria-label="user avatar image"
-          />
-          <Avatar
+        <template v-if="currentUserProfile && currentUserProfile.name">
+          <h5>Welcome Back, {{ currentUserProfile.name }}!</h5>
+          <nuxt-link
+            v-if="currentUserProfile.avatar_url"
+            to="/settings"
+            class="plain white clickable ml-2"
+            aria-label="manage profile"
+          >
+            <Avatar
+              :image="currentUserProfile.avatar_url"
+              shape="circle"
+              size="large"
+              aria-label="user avatar image"
+            />
+          </nuxt-link>
+          <nuxt-link
             v-else
-            shape="circle"
-            icon="pi pi-user"
-            size="large"
-            aria-label="user avatar image"
-          />
-        </nuxt-link>
+            to="/login"
+            class="plain white clickable ml-2"
+            aria-label="manage profile"
+          >
+            <Avatar
+              shape="circle"
+              icon="pi pi-user"
+              size="large"
+              aria-label="user avatar image"
+            />
+          </nuxt-link>
+        </template>
+        <template v-else>
+          <nuxt-link to="/login" class="plain mr-2">
+            <Button label="sign up" class="block" />
+          </nuxt-link>
+          <nuxt-link @click="showLoginModal = true" to="/login" class="plain">
+            <Button label="login" class="block p-button-outlined" />
+          </nuxt-link>
+        </template>
       </div>
     </div>
-    <Sidebar v-model:visible="visible" :baseZIndex="10000" position="right">
-      <the-menu @menu-clicked="visible = false" />
-    </Sidebar>
   </header>
+  <Dialog v-model:visible="showLoginModal" modal :style="{ width: '50vw' }">
+    <Login />
+  </Dialog>
 </template>
 
 <script setup>
 const currentUserProfile = useCurrentUserProfile()
-const visible = ref( false )
+const showLoginModal = ref( false )
 </script>
 
 <style lang="scss" scoped>
