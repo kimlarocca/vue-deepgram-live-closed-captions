@@ -17,13 +17,13 @@
           required
         />
       </div>
-      <div class="mb-2">
+      <div class="mb-3">
         <Password
           id="password"
           toggleMask
           :feedback="false"
           v-model="password"
-          class="w-full mb-2"
+          class="w-full"
           type="password"
           placeholder="Password"
           required

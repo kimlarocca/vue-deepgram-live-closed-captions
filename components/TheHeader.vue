@@ -35,10 +35,10 @@
           </nuxt-link>
         </template>
         <template v-else>
-          <nuxt-link to="/login" class="plain mr-2">
+          <nuxt-link to="/signup" class="plain mr-2">
             <Button label="sign up" class="block" />
           </nuxt-link>
-          <nuxt-link @click="showLoginModal = true" to="/login" class="plain">
+          <nuxt-link @click="showLoginModal = true" class="plain">
             <Button label="login" class="block p-button-outlined" />
           </nuxt-link>
         </template>

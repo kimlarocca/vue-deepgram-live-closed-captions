@@ -1,31 +1,21 @@
 <template>
-  <div class="sign-up">
+  <div class="signup container p-4">
     <Html lang="en">
       <Head>
-        <Title>Just Day Space | Sign Up</Title>
+        <Title>Swift Captions! Sign Up</Title>
       </Head>
     </Html>
-    <header class="flex align-items-end justify-content-between">
-      <nuxt-link to="/" class="plain"><cuetip-logo /></nuxt-link>
-      <p class="small">
-        Already have an account?
-        <nuxt-link to="/" class="like-h6">Sign In</nuxt-link>
-      </p>
-    </header>
-    <divider class="mb-6" />
-    <h1 class="mb-3">Welcome To Cuetip</h1>
-    <h2 class="mb-2">Tech and data provider in the cannabis space</h2>
+    <h1 class="mb-3">Get started for free</h1>
     <p>
-      Cuetip is a Tech and Data provider of premium technology and services to
-      the entire supply chain in the cannabis space. cuetip provides exclusive
-      insights into the rapidly evolving cannabis market and captures current
-      data.
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, esse
+      eum ex explicabo facere maiores minus mollitia nulla qui saepe tempora
+      veritatis. Dolore ducimus fuga provident sed temporibus. Ab, perspiciatis.
     </p>
     <divider class="my-6 w-2" />
     <h4 class="mb-4">Fill out the form below to register</h4>
     <supabase-signup-with-email />
     <divider class="mt-5 mb-4 w-2" />
-    <p class="mb-3">Or sign in with social:</p>
+    <p class="mb-3">Or sign in with google:</p>
     <supabase-login-with-google />
   </div>
 </template>
