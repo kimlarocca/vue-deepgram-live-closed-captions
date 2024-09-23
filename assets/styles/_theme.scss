@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
 
 $xsmall: 375px;
 $xs: 375px;
@@ -6414,7 +6414,7 @@ $max: 7680px;
 }
 
 .p-avatar {
-    background-color: rgba(0, 0, 0, 0.12);
+    background-color: var(--black);
     border-radius: 10px;
 }
 .p-avatar.p-avatar-lg {

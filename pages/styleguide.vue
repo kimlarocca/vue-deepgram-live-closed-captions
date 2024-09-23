@@ -1,8 +1,8 @@
 <template>
-  <div class="styleguide container">
+  <div class="styleguide container p-4">
     <Html lang="en">
       <Head>
-        <Title>Just Day Space | Styleguide</Title>
+        <Title>Swift Captions | Styleguide</Title>
       </Head>
     </Html>
     <h1>Styleguide</h1>

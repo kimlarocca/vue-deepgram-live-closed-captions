@@ -1,5 +1,10 @@
 <template>
   <div class="container p-4">
+    <Html lang="en">
+      <Head>
+        <Title>Swift Captions | Live Transcription</Title>
+      </Head>
+    </Html>
     <h1 class="mb-4">Live Transcription</h1>
     <div id="app">
       <Button v-if="!isStarted && !isStopped" @click="start()">

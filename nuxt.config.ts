@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   app: {
     head: {
-      title: 'Nuxt & Deepgram Live Closed Captions',
+      title: 'Swift Captions | Zero To Live Closed Captions In Minutes',
       htmlAttrs: {
         lang: 'en',
       },

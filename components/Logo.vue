@@ -138,7 +138,7 @@
 
 <style lang="scss" scoped>
 .logo {
-  height: 35px;
+  height: 30px;
   width: auto;
 }
 </style>

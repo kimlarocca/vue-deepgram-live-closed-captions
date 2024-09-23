@@ -26,12 +26,15 @@ a:visited,
 a:active {
   text-decoration: none;
   color: var(--link-color);
-  border-bottom: none;
-  border-bottom: solid 1px transparent;
+  border-bottom: solid 1px var(--link-color);
   transition: var(--transition);
 
   &:hover {
-    border-bottom: solid 1px var(--link-color);
+    background-color: var(--white);
+    border-bottom: solid 1px var(--white);
+    border-radius: var(--border-radius);
+    margin: 0 -6px;
+    padding: 0 6px;
   }
 
   &.plain {
@@ -129,7 +132,7 @@ table {
   width: fit-content;
   min-width: 50px;
   text-align: center;
-  background: var(--purple);
+  background: var(--black);
   color: var(--white);
   border-radius: var(--border-radius);
   padding: 0.5rem 1rem;
