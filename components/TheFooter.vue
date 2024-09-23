@@ -1,7 +1,7 @@
 <template>
   <footer class="container p-4">
     <Divider class="mb-5" />
-    <p>Copyright © {{ currentYear }} 4 Site USA, LLC. All Rights Reserved.</p>
+    <p>Copyright © {{ currentYear }} SwiftCaptions.com. All Rights Reserved.</p>
   </footer>
 </template>
 

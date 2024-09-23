@@ -23,7 +23,7 @@ h1,
 .like-h1 {
   @include typeface(header, 11);
   font-weight: 300;
-  letter-spacing: 0.5px;
+  letter-spacing: -1px;
   @media all and (min-width: $medium) {
     @include typeface(header, 14);
     font-weight: 300;

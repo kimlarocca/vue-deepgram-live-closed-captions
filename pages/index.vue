@@ -17,6 +17,12 @@
         <nuxt-link to="/dashboard">
           <Button label="go to dashboard" class="block mb-3" />
         </nuxt-link>
+        <nuxt-link to="/dashboard">
+          <Button
+            label="go to dashboard"
+            class="block p-button-outlined mb-3"
+          />
+        </nuxt-link>
       </div>
       <div class="col col-12 lg:col-3">
         <SupabaseLoginWithEmail />

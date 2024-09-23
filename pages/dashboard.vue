@@ -9,7 +9,7 @@
         Pause transcription
       </Button>
       <Button
-        v-if="isStarted && !isListening && !isStoppedStarted. Now I'm going to pause Now I have resumed. No, I shall stop Okay. "
+        v-if="isStarted && !isListening && !isStoppedStarted"
         @click="resume()"
       >
         Resume transcription

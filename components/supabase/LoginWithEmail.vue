@@ -8,32 +8,26 @@
     </template>
     <form @submit.prevent="login">
       <div class="mb-3">
-        <span class="p-float-label inline">
-          <InputText
-            id="email"
-            v-model="email"
-            class="w-full"
-            type="email"
-            placeholder="Email Address"
-            required
-          />
-          <label for="email">Email Address</label>
-        </span>
+        <InputText
+          id="email"
+          v-model="email"
+          class="w-full"
+          type="email"
+          placeholder="Email Address"
+          required
+        />
       </div>
       <div class="mb-2">
-        <span class="p-float-label inline">
-          <Password
-            id="password"
-            toggleMask
-            :feedback="false"
-            v-model="password"
-            class="w-full mb-2"
-            type="password"
-            placeholder="Password"
-            required
-          />
-          <label for="password">Password</label>
-        </span>
+        <Password
+          id="password"
+          toggleMask
+          :feedback="false"
+          v-model="password"
+          class="w-full mb-2"
+          type="password"
+          placeholder="Password"
+          required
+        />
       </div>
       <Button
         label="Sign In With Email & Password"

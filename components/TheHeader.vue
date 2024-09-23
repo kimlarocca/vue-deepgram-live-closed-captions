@@ -32,7 +32,6 @@
     <Sidebar v-model:visible="visible" :baseZIndex="10000" position="right">
       <the-menu @menu-clicked="visible = false" />
     </Sidebar>
-    <Divider />
   </header>
 </template>
 
