@@ -4,6 +4,8 @@
     <div class="mb-4">
       <span class="p-float-label inline">
         <InputText id="full_name" v-model="fullName" @change="updateProfile" />
+        <label for="full_name">Name</label>
+      </span>
     </div>
     <div class="mb-4">
       <span class="p-float-label inline">
