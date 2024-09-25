@@ -10,7 +10,7 @@
         {{ successMessage }}
       </Message>
     </template>
-    <form v-if="!successMessage" @submit.prevent="login" class="width400">
+    <form v-if="!successMessage" @submit.prevent="login">
       <div class="mb-3">
         <InputText
           id="email"
@@ -54,6 +54,9 @@ const login = async () => {
   const { error } = await client.auth.signUp( {
     email: email.value,
     password: password.value,
+    options: {
+      emailRedirectTo: 'http://localhost:3000/success' // you will have to make the project part dynamic in whichever way the framework you are using allows you to do this.
+    }
   } )
   if ( error ) {
     console.log( error )

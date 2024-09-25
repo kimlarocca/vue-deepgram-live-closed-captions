@@ -1,12 +1,14 @@
 <template>
   <header class="container p-4">
     <div class="flex align-items-center justify-content-between">
-      <nuxt-link to="/dashboard" class="plain">
+      <nuxt-link to="/" class="plain">
         <Logo />
       </nuxt-link>
       <div class="flex align-items-center">
-        <template v-if="currentUserProfile && currentUserProfile.name">
-          <h5>Welcome Back, {{ currentUserProfile.name }}!</h5>
+        <template v-if="currentUserProfile">
+          <nuxt-link to="/dashboard" class="plain mr-2">
+            <Button label="dashboard" class="block p-button-outlined" />
+          </nuxt-link>
           <nuxt-link
             v-if="currentUserProfile.avatar_url"
             to="/settings"
@@ -22,7 +24,7 @@
           </nuxt-link>
           <nuxt-link
             v-else
-            to="/login"
+            to="/settings"
             class="plain white clickable ml-2"
             aria-label="manage profile"
           >
@@ -45,13 +47,19 @@
       </div>
     </div>
   </header>
-  <Dialog v-model:visible="showLoginModal" modal :style="{ width: '50vw' }">
+  <Dialog
+    v-model:visible="showLoginModal"
+    modal
+    :style="{ width: '350px' }"
+    position="topright"
+    :dismissable-mask="true"
+  >
     <Login />
   </Dialog>
 </template>
 
 <script setup>
-const currentUserProfile = useCurrentUserProfile()
+const currentUserProfile = useSupabaseUser()
 const showLoginModal = ref( false )
 </script>
 

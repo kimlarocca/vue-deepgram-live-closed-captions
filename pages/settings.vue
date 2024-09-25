@@ -1,87 +1,34 @@
 <template>
-  <div v-if="profile && profile.length > 0" class="settings">
+  <div v-if="profile && profile.length > 0" class="settings container p-4">
     <Html lang="en">
       <Head>
-        <Title>Just Day Space | Profile Settings</Title>
+        <Title>Swift Captions! Account Settings</Title>
       </Head>
     </Html>
-    <div class="grid">
-      <div class="col hidden col-12 lg:col-3 lg:flex mb-4">
-        <nav class="container-white w-full h-fit p-4">
-          <p>
-            <nuxt-link
-              to="#profile"
-              class="plain"
-              :class="hash === '#profile' ? 'active' : ''"
-            >
-              <i class="pi pi-cog mr-2" /> Profile
-            </nuxt-link>
-          </p>
-          <divider class="my-3" />
-          <p>
-            <nuxt-link
-              to="#locations"
-              class="plain"
-              :class="hash === '#profile' ? 'active' : ''"
-            >
-              <i class="pi pi-map-marker mr-2" /> Locations
-            </nuxt-link>
-          </p>
-          <divider class="my-3" />
-          <p>
-            <nuxt-link
-              to="#password"
-              class="plain"
-              :class="hash === '#password' ? 'active' : ''"
-            >
-              <i class="pi pi-lock mr-2" /> Change Password
-            </nuxt-link>
-          </p>
-          <divider class="my-3" />
-          <p>
-            <nuxt-link
-              to="#delete"
-              class="plain"
-              :class="hash === '#delete' ? 'active' : ''"
-            >
-              <i class="pi pi-trash mr-2" /> Delete Account
-            </nuxt-link>
-          </p>
-        </nav>
-      </div>
-      <div class="col col-12 lg:col-9">
-        <div id="profile" class="container-white p-4 mb-4">
-          <h4 class="mb-4">Profile</h4>
-          <supabase-upload-image :image="avatarImage || ''" class="mb-5" />
-          <manage-user-profile />
-        </div>
-        <div id="locations" class="container-white p-4 mb-4">
-          <h4 class="mb-4">Projects</h4>
-          <manage-user-locations />
-        </div>
-        <div id="password" class="container-white p-4 mb-4">
-          <supabase-reset-password />
-        </div>
-        <div id="delete" class="container-white p-4 mb-4">
-          <h4 class="mb-4">Delete Account</h4>
-          <p>
-            Please <a href="mailto:help@cuetip.com">contact us</a> if you wish
-            to delete your account.
-          </p>
-        </div>
-        <div class="changes-saved-toast">
-          <Message
-            v-if="successMessage"
-            class="mb-4"
-            severity="success"
-            :closable="false"
-            :sticky="false"
-          >
-            Your changes have been saved.
-          </Message>
-        </div>
-      </div>
-    </div>
+    <h1 class="mb-4">Account Settings</h1>
+    <supabase-upload-image :image="avatarImage || ''" class="mb-5" />
+    <manage-user-profile />
+  </div>
+  <div id="password" class="container-white p-4 mb-4">
+    <supabase-reset-password />
+  </div>
+  <div id="delete" class="container-white p-4 mb-4">
+    <h4 class="mb-4">Delete Account</h4>
+    <p>
+      Please <a href="mailto:help@cuetip.com">contact us</a> if you wish to
+      delete your account.
+    </p>
+  </div>
+  <div class="changes-saved-toast">
+    <Message
+      v-if="successMessage"
+      class="mb-4"
+      severity="success"
+      :closable="false"
+      :sticky="false"
+    >
+      Your changes have been saved.
+    </Message>
   </div>
 </template>
 

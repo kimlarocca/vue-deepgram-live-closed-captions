@@ -30,8 +30,8 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/supabase'],
 
   supabase: {
-    key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6Ym56ZHJid2RnY2NtYXdxd3RmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjQwOTc4NzYsImV4cCI6MjAzOTY3Mzg3Nn0.w02ujkoreWL7FhuAqP5nDNFTVsKIAwrh4ZoknJ8WuJs',
-    url: 'https://qzbnzdrbwdgccmawqwtf.supabase.co',
+    key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNiend2ZmxhcXJqdHJub3N5eXFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjcyODIwMzcsImV4cCI6MjA0Mjg1ODAzN30.tbPafiQsT-iTDgItjYSxOODfvuBum_Dcd7cKO_Mi9yM',
+    url: 'https://cbzwvflaqrjtrnosyyqd.supabase.co',
     redirect: true,
   },
 
@@ -54,10 +54,10 @@ export default defineNuxtConfig({
     DEEPGRAM_API_KEY: process.env.DEEPGRAM_API_KEY,
     public: {
       environment: process.env.environment ?? 'local',
-      supabaseAuthSignInRedirectTo: process.env.environment === 'local' ? 'http://localhost:3000' : 'https://kimlarocca.com',
-      supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6Ym56ZHJid2RnY2NtYXdxd3RmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjQwOTc4NzYsImV4cCI6MjAzOTY3Mzg3Nn0.w02ujkoreWL7FhuAqP5nDNFTVsKIAwrh4ZoknJ8WuJs',
-      supabaseUrl: 'https://qzbnzdrbwdgccmawqwtf.supabase.co',
-      supabaseAuthTokenName: 'sb-qzbnzdrbwdgccmawqwtf-auth-token',
+      supabaseAuthSignInRedirectTo: process.env.environment === 'local' ? 'http://localhost:3000' : 'https://swiftcaptions.com',
+      supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNiend2ZmxhcXJqdHJub3N5eXFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjcyODIwMzcsImV4cCI6MjA0Mjg1ODAzN30.tbPafiQsT-iTDgItjYSxOODfvuBum_Dcd7cKO_Mi9yM',
+      supabaseUrl: 'https://cbzwvflaqrjtrnosyyqd.supabase.co',
+      supabaseAuthTokenName: 'sb-cbzwvflaqrjtrnosyyqd-auth-token',
     }
   },
 

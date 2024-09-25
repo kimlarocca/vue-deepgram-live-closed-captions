@@ -34,12 +34,6 @@
     <p class="mb-4 small">Here is a paragraph with small text.</p>
     <div class="tag mb-4">this is a tag</div>
     <divider class="my-7" />
-    <div class="mb-3">
-      <span class="p-float-label inline">
-        <InputText id="username" v-model="value" />
-        <label for="username">Username</label>
-      </span>
-    </div>
     <InputText placeholder="Email Address" v-model="value" class="block mb-3" />
     <div class="mb-3">
       <Password toggleMask placeholder="Password" v-model="value" />

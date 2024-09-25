@@ -6,17 +6,14 @@
       </Head>
     </Html>
     <h1 class="mb-3">Get started for free</h1>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, esse
-      eum ex explicabo facere maiores minus mollitia nulla qui saepe tempora
-      veritatis. Dolore ducimus fuga provident sed temporibus. Ab, perspiciatis.
-    </p>
+    <h4>Start creating and sharing your captions with the world</h4>
     <divider class="my-6 w-2" />
-    <h4 class="mb-4">Fill out the form below to register</h4>
-    <supabase-signup-with-email />
-    <divider class="mt-5 mb-4 w-2" />
-    <p class="mb-3">Or sign in with google:</p>
-    <supabase-login-with-google />
+    <p class="mb-4">Please fill out the form below to sign up:</p>
+    <div class="width400">
+      <supabase-signup-with-email class="mb-6" />
+      <p class="mb-3">Or sign in with google:</p>
+      <supabase-login-with-google />
+    </div>
   </div>
 </template>
 

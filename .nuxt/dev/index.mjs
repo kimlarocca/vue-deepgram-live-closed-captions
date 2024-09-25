@@ -103,13 +103,13 @@ const _inlineRuntimeConfig = {
   },
   "public": {
     "environment": "local",
-    "supabaseAuthSignInRedirectTo": "https://kimlarocca.com",
-    "supabaseKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6Ym56ZHJid2RnY2NtYXdxd3RmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjQwOTc4NzYsImV4cCI6MjAzOTY3Mzg3Nn0.w02ujkoreWL7FhuAqP5nDNFTVsKIAwrh4ZoknJ8WuJs",
-    "supabaseUrl": "https://qzbnzdrbwdgccmawqwtf.supabase.co",
-    "supabaseAuthTokenName": "sb-qzbnzdrbwdgccmawqwtf-auth-token",
+    "supabaseAuthSignInRedirectTo": "http://localhost:3000",
+    "supabaseKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNiend2ZmxhcXJqdHJub3N5eXFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjcyODIwMzcsImV4cCI6MjA0Mjg1ODAzN30.tbPafiQsT-iTDgItjYSxOODfvuBum_Dcd7cKO_Mi9yM",
+    "supabaseUrl": "https://cbzwvflaqrjtrnosyyqd.supabase.co",
+    "supabaseAuthTokenName": "sb-cbzwvflaqrjtrnosyyqd-auth-token",
     "supabase": {
-      "url": "https://qzbnzdrbwdgccmawqwtf.supabase.co",
-      "key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6Ym56ZHJid2RnY2NtYXdxd3RmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjQwOTc4NzYsImV4cCI6MjAzOTY3Mzg3Nn0.w02ujkoreWL7FhuAqP5nDNFTVsKIAwrh4ZoknJ8WuJs",
+      "url": "https://cbzwvflaqrjtrnosyyqd.supabase.co",
+      "key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNiend2ZmxhcXJqdHJub3N5eXFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjcyODIwMzcsImV4cCI6MjA0Mjg1ODAzN30.tbPafiQsT-iTDgItjYSxOODfvuBum_Dcd7cKO_Mi9yM",
       "client": {},
       "redirect": true,
       "cookies": {

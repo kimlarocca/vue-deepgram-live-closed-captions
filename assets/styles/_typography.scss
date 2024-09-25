@@ -43,13 +43,13 @@ h2,
 
 h3,
 .like-h3 {
-  @include typeface(primary, 7);
+  @include typeface(primary, 8);
   letter-spacing: 0.5px;
-  font-weight: 600;
+  font-weight: 500;
   @media all and (min-width: $medium) {
-    @include typeface(primary, 9);
+    @include typeface(primary, 10);
     letter-spacing: 0.5px;
-    font-weight: 600;
+    font-weight: 500;
   }
 }
 

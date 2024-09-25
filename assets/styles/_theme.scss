@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap');
 
 $xsmall: 375px;
 $xs: 375px;
@@ -28,12 +28,12 @@ $max: 7680px;
     --blue: #5ce1e6;
     --dark-blue: #003785;
     --medium-blue: #003785;
-    --light-blue: #5ce1e6;
+    --light-blue: #e3efff;
     --gray: #5c5c5c;
     --gray-green: #edf5f3;
     --light-gray: #d3d3d3;
     --medium-gray: #979797;
-    --pink: #ffd1e6;
+    --pink: #e9d8f1;
     --dark-pink: #d1005e;
     --green: #b1ddc0;
     --red: #b71c1c;
@@ -1172,7 +1172,7 @@ $max: 7680px;
     height: 1rem;
 }
 .p-inputswitch .p-inputswitch-slider {
-    background: rgba(0, 0, 0, 0.38);
+    background: var(--gray);
     transition:
         background-color 0.2s,
         border-color 0.2s,
@@ -1199,16 +1199,16 @@ $max: 7680px;
     box-shadow: none;
 }
 .p-inputswitch:not(.p-disabled):hover .p-inputswitch-slider {
-    background: rgba(0, 0, 0, 0.38);
+    background: var(--black);
 }
 .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
-    background: var(--light-green);
+    background: var(--gray);
 }
 .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider:before {
-    background: var(--green);
+    background: var(--dark-pink);
 }
 .p-inputswitch.p-inputswitch-checked:not(.p-disabled):hover .p-inputswitch-slider {
-    background: var(--light-green);
+    background: var(--black);
 }
 .p-inputswitch.p-invalid {
     border-color: #b00020;
@@ -6123,7 +6123,7 @@ $max: 7680px;
     color: var(--black);
 }
 .p-message.p-message-success {
-    background: var(--light-green);
+    background: var(--green);
     border: solid transparent;
     border-width: 0 0 0 0;
     color: #1b5e20;

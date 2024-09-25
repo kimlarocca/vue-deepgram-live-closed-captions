@@ -1,55 +1,9 @@
 <template>
   <div v-if="profile && profile.length > 0">
     <p class="text-sm mb-4">Username: {{ currentUser?.email }}</p>
-    <Message
-      severity="error"
-      v-if="userTypeInvalid && !hideUserType"
-      :closable="false"
-      class="mb-4"
-    >
-      Please select at least one user type!
-    </Message>
-    <div
-      v-if="!hideUserType"
-      class="flex flex-column lg:flex-row lg:align-items-center mb-5"
-    >
-      <p class="mb-3 lg:mb-0 lg:mr-3 block md:inline text-sm">User Type:</p>
-      <div class="mb-3 lg:mb-0 lg:mr-3 block lg:inline">
-        <Checkbox
-          id="farm_owner"
-          v-model="farmOwner"
-          :binary="true"
-          class="mr-2"
-          @change="updateProfile"
-        />
-        <label for="farm_owner">Cannabis Farm Owner</label>
-      </div>
-      <div class="mb-3 lg:mb-0 lg:mr-3 block lg:inline">
-        <Checkbox
-          id="hemp_farm_owner"
-          v-model="hempFarmOwner"
-          :binary="true"
-          class="mr-2"
-          @change="updateProfile"
-        />
-        <label for="hemp_farm_owner">Hemp Farm Owner</label>
-      </div>
-      <div class="mb-3 lg:mb-0 lg:mr-3 block lg:inline">
-        <Checkbox
-          id="lab_owner"
-          v-model="labOwner"
-          :binary="true"
-          class="mr-2"
-          @change="updateProfile"
-        />
-        <label for="lab_owner">Extraction Lab Owner</label>
-      </div>
-    </div>
     <div class="mb-4">
       <span class="p-float-label inline">
         <InputText id="full_name" v-model="fullName" @change="updateProfile" />
-        <label for="full_name">Full Name</label>
-      </span>
     </div>
     <div class="mb-4">
       <span class="p-float-label inline">

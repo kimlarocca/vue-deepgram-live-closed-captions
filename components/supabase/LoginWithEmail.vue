@@ -30,7 +30,7 @@
         />
       </div>
       <Button
-        label="Sign In With Email & Password"
+        label="Login With Email & Password"
         class="w-full"
         type="submit"
       />

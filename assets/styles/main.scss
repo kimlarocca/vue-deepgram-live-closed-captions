@@ -165,7 +165,7 @@ table {
 }
 
 .p-progress-spinner-circle {
-  stroke: var(--purple) !important;
+  stroke: var(--black) !important;
 }
 
 .p-message {
@@ -203,5 +203,23 @@ table {
   transition: var(--transition) !important;
   &:hover {
     background: var(--light-gray) !important;
+  }
+}
+
+.card {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: var(--box-shadow);
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+}
+
+.icon {
+  height: 60px;
+  // background: var(--dark-pink);
+  // border-radius: var(--border-radius);
+  // padding:12px;
+  // overflow: visible;
+  path {
+    fill: var(--black);
   }
 }
