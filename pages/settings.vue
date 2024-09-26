@@ -1,34 +1,37 @@
 <template>
-  <div v-if="profile && profile.length > 0" class="settings container p-4">
+  <div class="settings container p-4">
     <Html lang="en">
       <Head>
         <Title>Swift Captions! Account Settings</Title>
       </Head>
     </Html>
-    <h1 class="mb-4">Account Settings</h1>
-    <supabase-upload-image :image="avatarImage || ''" class="mb-5" />
+    <h1 class="mb-5">Account Settings</h1>
     <manage-user-profile />
-  </div>
-  <div id="password" class="container-white p-4 mb-4">
-    <supabase-reset-password />
-  </div>
-  <div id="delete" class="container-white p-4 mb-4">
-    <h4 class="mb-4">Delete Account</h4>
-    <p>
-      Please <a href="mailto:help@cuetip.com">contact us</a> if you wish to
-      delete your account.
-    </p>
-  </div>
-  <div class="changes-saved-toast">
-    <Message
-      v-if="successMessage"
-      class="mb-4"
-      severity="success"
-      :closable="false"
-      :sticky="false"
-    >
-      Your changes have been saved.
-    </Message>
+    <divider class="my-6 w-2" />
+    <supabase-upload-image :image="avatarImage || ''" />
+    <divider class="my-6 w-2" />
+    <div id="password">
+      <supabase-reset-password />
+    </div>
+    <divider class="my-6 w-2" />
+    <div id="delete">
+      <h4 class="mb-4">Delete Account</h4>
+      <p>
+        Please <a href="mailto:help@swiftcaptions.com">contact us</a> if you
+        wish to delete your account.
+      </p>
+    </div>
+    <div class="changes-saved-toast">
+      <Message
+        v-if="successMessage"
+        class="mb-4"
+        severity="success"
+        :closable="false"
+        :sticky="false"
+      >
+        Your changes have been saved.
+      </Message>
+    </div>
   </div>
 </template>
 
@@ -39,34 +42,11 @@ definePageMeta( {
 
 const currentUser = useSupabaseUser()
 const supabase = useSupabaseClient()
-const route = useRoute()
 
 const avatarImage = ref( null )
-const hash = ref( null )
 const profile = ref( [] )
 const successMessage = ref( false )
 const userType = ref( null )
-
-onMounted( () => {
-  // set hash name
-  hash.value = route.hash
-  // if hash exists, scroll down to that id
-  if ( window.location.hash ) {
-    const element = document.getElementById( window.location.hash.slice( 1 ) )
-    if ( element ) {
-      element.scrollIntoView()
-      hash.value = window.location.hash
-    }
-  }
-} )
-
-// watch for route.hash changes
-watch(
-  () => route.hash,
-  ( newVal ) => {
-    hash.value = newVal
-  }
-)
 
 // get the profile for the logged in user
 let { data } = await supabase

@@ -33,6 +33,7 @@
         label="Login With Email & Password"
         class="w-full"
         type="submit"
+        @click="emit('closePanel')"
       />
     </form>
   </div>
@@ -41,6 +42,7 @@
 <script setup>
 const client = useSupabaseClient()
 const config = useRuntimeConfig()
+const emit = defineEmits( [ 'closePanel' ] )
 
 const email = ref( '' )
 const password = ref( '' )

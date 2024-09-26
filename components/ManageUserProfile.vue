@@ -1,46 +1,30 @@
 <template>
   <div v-if="profile && profile.length > 0">
-    <p class="text-sm mb-4">Username: {{ currentUser?.email }}</p>
-    <div class="mb-4">
-      <span class="p-float-label inline">
-        <InputText id="full_name" v-model="fullName" @change="updateProfile" />
-        <label for="full_name">Name</label>
-      </span>
-    </div>
-    <div class="mb-4">
-      <span class="p-float-label inline">
-        <InputMask
-          v-model="phone"
-          date="phone"
-          mask="(999) 999-9999"
-          placeholder="(999) 999-9999"
+    <p class="mb-3">
+      Email Address: <span class="font-bold">{{ currentUser?.email }}</span>
+    </p>
+    <div class="flex align-items-center mb-4">
+      <p class="mr-2">Name:</p>
+      <div class="p-inputgroup">
+        <InputText
+          v-model="fullName"
+          placeholder="Name"
           @change="updateProfile"
+          class="width400"
         />
-        <label for="phone">Phone Number</label>
-      </span>
+        <Button icon="pi pi-save" @click="updateProfile" />
+      </div>
     </div>
-    <div class="mb-4">
-      <span class="p-float-label inline">
-        <InputNumber
-          id="workers"
-          v-model="workers"
-          @input="updateProfile"
-          @update:modelValue="updateProfile"
-        />
-        <label for="workers">Total Number Of Workers</label>
-      </span>
-    </div>
-    <div class="mb-4">
-      <span class="p-float-label inline">
-        <InputNumber
-          id="lights"
-          v-model="lights"
-          @input="updateProfile"
-          @update:modelValue="updateProfile"
-        />
-        <label for="lights">Total Number Of Lights</label>
-      </span>
-    </div>
+    <divider class="my-6 w-2" />
+    <h4 class="mb-4">Live Captions Theme</h4>
+    <p class="mb-3">Please select a theme for your captions display:</p>
+    <Dropdown
+      class="width400"
+      v-model="theme"
+      :options="themes"
+      placeholder="Select a theme"
+      @change="updateProfile"
+    />
   </div>
   <div class="changes-saved-toast">
     <Message
@@ -57,26 +41,16 @@
 
 <script setup>
 const currentUser = useSupabaseUser()
-const currentUserProfile = useCurrentUserProfile()
 const supabase = useSupabaseClient()
 
-const farmOwner = ref( null )
-const hempFarmOwner = ref( null )
 const fullName = ref( null )
-const labOwner = ref( null )
-const lights = ref( null )
-const phone = ref( null )
 const profile = ref( [] )
+const theme = ref( null )
 const successMessage = ref( false )
-const userTypeInvalid = ref( false )
-const workers = ref( null )
 
-const props = defineProps( {
-  hideUserType: {
-    type: Boolean,
-    default: false,
-  },
-} )
+const themes = ref( [
+  'Swift', 'Light', 'Dark', 'High Contrast'
+] )
 
 // get the profile for the logged in user
 let { data } = await supabase
@@ -86,53 +60,25 @@ let { data } = await supabase
   .limit( 1 )
 if ( data ) {
   profile.value = data
-  farmOwner.value = data[ 0 ]?.farm_owner
-  hempFarmOwner.value = data[ 0 ]?.hemp_farm_owner
   fullName.value = data[ 0 ]?.full_name
-  labOwner.value = data[ 0 ]?.lab_owner
-  lights.value = data[ 0 ]?.number_of_lights
-  phone.value = data[ 0 ]?.phone
-  workers.value = data[ 0 ]?.number_of_workers
-  // check if user type is valid
-  if ( !farmOwner.value && !labOwner.value && !hempFarmOwner.value ) {
-    userTypeInvalid.value = true
-  }
+  theme.value = data[ 0 ]?.theme
 }
 
 const updateProfile = async () => {
-  // check if user type is valid
-  if ( !farmOwner.value && !labOwner.value && !hempFarmOwner.value ) {
-    userTypeInvalid.value = true
-    return
-  }
-  userTypeInvalid.value = false
   successMessage.value = false
   const { error } = await supabase
     .from( 'profiles' )
     .upsert( {
       id: currentUser.value.id,
       updated_at: new Date().toISOString(),
-      farm_owner: farmOwner.value,
-      hemp_farm_owner: hempFarmOwner.value,
       full_name: fullName.value,
-      lab_owner: labOwner.value,
-      number_of_lights: lights.value,
-      number_of_workers: workers.value,
-      phone: phone.value,
+      theme: theme.value,
     } )
     .match( { id: currentUser.value.id } )
   if ( error ) {
     console.log( 'updateProfile error', error )
   } else {
     successMessage.value = true
-    // update the state
-    currentUserProfile.value.farm_owner = farmOwner.value
-    currentUserProfile.value.hemp_farm_owner = hempFarmOwner.value
-    currentUserProfile.value.full_name = fullName.value
-    currentUserProfile.value.lab_owner = labOwner.value
-    currentUserProfile.value.number_of_lights = lights.value
-    currentUserProfile.value.number_of_workers = workers.value
-    currentUserProfile.value.phone = phone.value
   }
 }
 </script>

@@ -18,6 +18,7 @@
 <script setup>
 const client = useSupabaseClient()
 const config = useRuntimeConfig()
+const emit = defineEmits( [ 'closePanel' ] )
 
 const errorMessage = ref( '' )
 
@@ -29,6 +30,7 @@ const props = defineProps( {
 } )
 
 const login = async () => {
+  emit( 'closePanel' )
   const error = await client.auth.signInWithOAuth(
     { provider: 'google' },
     { redirectTo: config.supabaseAuthSignInRedirectTo }

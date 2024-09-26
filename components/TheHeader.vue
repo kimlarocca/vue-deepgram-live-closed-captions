@@ -5,18 +5,18 @@
         <Logo />
       </nuxt-link>
       <div class="flex align-items-center">
-        <template v-if="currentUserProfile">
+        <template v-if="currentUser">
           <nuxt-link to="/dashboard" class="plain mr-2">
             <Button label="dashboard" class="block p-button-outlined" />
           </nuxt-link>
           <nuxt-link
-            v-if="currentUserProfile.avatar_url"
+            v-if="currentUserProfile?.avatar_url"
             to="/settings"
             class="plain white clickable ml-2"
             aria-label="manage profile"
           >
             <Avatar
-              :image="currentUserProfile.avatar_url"
+              :image="currentUserProfile?.avatar_url"
               shape="circle"
               size="large"
               aria-label="user avatar image"
@@ -33,6 +33,13 @@
               icon="pi pi-user"
               size="large"
               aria-label="user avatar image"
+            />
+          </nuxt-link>
+          <nuxt-link to="/logout" class="plain ml-2">
+            <Button
+              v-tooltip.bottom="'Logout'"
+              icon="pi pi-sign-out"
+              class="p-button-rounded p-button-lg"
             />
           </nuxt-link>
         </template>
@@ -54,17 +61,24 @@
     position="topright"
     :dismissable-mask="true"
   >
-    <Login />
+    <Login @close-panel="showLoginModal = false" />
   </Dialog>
 </template>
 
 <script setup>
-const currentUserProfile = useSupabaseUser()
+const currentUser = useSupabaseUser()
+const currentUserProfile = useCurrentUserProfile()
+
+const avatarImage = ref( null )
 const showLoginModal = ref( false )
 </script>
 
 <style lang="scss" scoped>
 header .logo {
   margin-bottom: -5px;
+}
+header .p-button-lg {
+  width: 48px !important;
+  height: 48px !important;
 }
 </style>
