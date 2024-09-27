@@ -30,7 +30,7 @@
     <divider class="my-6 w-2" />
     <h4 class="mb-4">Full Screen Theme</h4>
     <p class="mb-3">
-      Please select a theme for your full screen captions display:
+      Please select a default theme for your full screen captions display:
     </p>
     <Dropdown
       class="width400"
