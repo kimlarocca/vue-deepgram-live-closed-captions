@@ -2,44 +2,119 @@
   <div class="container p-4">
     <Html lang="en">
       <Head>
-        <Title>Swift Captions! Live Transcription</Title>
+        <Title>Swift Captions! Dashboard</Title>
       </Head>
     </Html>
-    <h1 class="mb-4">Live Transcription</h1>
-    <div id="app">
-      <Button v-if="!isStarted && !isStopped" @click="start()">
-        Start transcription
-      </Button>
-      <Button v-if="isStarted && isListening" @click="pause()">
-        Pause transcription
-      </Button>
-      <Button
-        v-if="isStarted && !isListening && !isStoppedStarted"
-        @click="resume()"
+    <transition name="slide-fade">
+      <div
+        v-if="fullScreen"
+        class="full-screen p-4"
+        :class="currentUserProfile?.theme"
       >
-        Resume transcription
-      </Button>
-      <Button v-if="isStarted && !isStopped" @click="stop()">
-        Stop transcription
-      </Button>
-      <Button v-if="isStarted && isStopped" @click="startNewSession()">
-        Start a new session
-      </Button>
+        <div v-if="!hideCaptions" class="mt-5 captions">
+          <p
+            v-for="transcript in transcripts"
+            :key="transcript"
+            :class="currentUserProfile?.theme"
+          >
+            {{ transcript }}
+          </p>
+        </div>
+      </div>
+    </transition>
+    <div v-if="!hideCaptions" class="mt-5 captions">
       <p v-for="transcript in transcripts" :key="transcript">
         {{ transcript }}
       </p>
+    </div>
+    <div class="controls">
+      <Button
+        v-if="!isStarted && !isStopped"
+        @click="start()"
+        icon="pi pi-play"
+        class="p-button-rounded"
+        v-tooltip.top="'Start'"
+      />
+      <Button
+        v-if="isStarted && isListening"
+        @click="pause()"
+        icon="pi pi-pause"
+        class="p-button-rounded"
+        v-tooltip.top="'Pause'"
+      />
+      <Button
+        v-if="isStarted && !isListening && !isStoppedStarted"
+        @click="resume()"
+        icon="pi pi-play"
+        class="p-button-rounded"
+        v-tooltip.top="'Resume'"
+      />
+      <Button
+        v-if="isStarted && !isStopped"
+        @click="stop()"
+        icon="pi pi-stop"
+        class="p-button-rounded ml-2"
+        v-tooltip.top="'Stop Session'"
+      />
+      <Button
+        v-if="isStarted && isStopped"
+        @click="startNewSession()"
+        icon="pi pi-refresh"
+        class="p-button-rounded ml-2"
+      />
+      <Button
+        v-if="!fullScreen"
+        @click="fullScreen = true"
+        icon="pi pi-window-maximize"
+        class="p-button-rounded ml-2"
+        v-tooltip.top="'Enter Full Screen'"
+      />
+      <Button
+        v-if="fullScreen"
+        @click="fullScreen = false"
+        icon="pi pi-window-minimize"
+        class="p-button-rounded ml-2"
+        v-tooltip.top="'Exit Full Screen'"
+      />
+      <Button
+        v-if="hideCaptions"
+        @click="hideCaptions = false"
+        icon="pi pi-eye-slash"
+        class="p-button-rounded ml-2"
+        v-tooltip.top="'Show Captions'"
+      />
+      <Button
+        v-if="!hideCaptions"
+        @click="hideCaptions = true"
+        icon="pi pi-eye"
+        class="p-button-rounded ml-2"
+        v-tooltip.top="'Hide Captions'"
+      />
+      <Button
+        @click="navigateTo('/settings')"
+        icon="pi pi-cog"
+        class="p-button-rounded ml-2"
+        v-tooltip.top="'Theme Settings'"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
+definePageMeta( {
+  middleware: 'auth',
+} )
+
+const currentUserProfile = useCurrentUserProfile()
 const isStarted = ref( false )
 const isStopped = ref( false )
 const isListening = ref( false )
+const fullScreen = ref( false )
+const hideCaptions = ref( false )
 let mediaRecorder = null
 let socket = null
 let stream = null
-const transcripts = ref( [] )
+const transcripts = ref( [ 'hello this is a test' ] )
 
 const start = async () => {
   transcripts.value = []
@@ -120,3 +195,53 @@ onMounted( async () => {
   mediaRecorder = new MediaRecorder( stream, { mimeType: 'audio/webm' } )
 } )
 </script>
+
+<style lang="scss">
+.dashboard footer {
+  display: none;
+}
+.captions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.captions p {
+  font-size: 7rem;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: auto;
+}
+.controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+  background: var(--black);
+  .p-button-rounded {
+    border: 1px solid var(--white);
+    &:hover {
+      border: 1px solid var(--white);
+    }
+  }
+}
+.full-screen {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  padding-bottom: 70px !important;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>

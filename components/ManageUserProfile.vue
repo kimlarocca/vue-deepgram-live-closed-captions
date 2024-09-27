@@ -1,5 +1,17 @@
 <template>
   <div v-if="profile && profile.length > 0">
+    <template v-if="profile[0].paid_user">
+      <p class="mb-3">
+        Subscription Plan: <span class="font-bold">Unlimited</span>
+      </p>
+    </template>
+    <template v-else>
+      <p class="mb-1">Subscription Plan: <span class="font-bold">Free</span></p>
+      <p class="mb-3">
+        Free Minutes Used:
+        <span class="font-bold">{{ profile[0].free_minutes_used }} / 200</span>
+      </p>
+    </template>
     <p class="mb-3">
       Email Address: <span class="font-bold">{{ currentUser?.email }}</span>
     </p>
@@ -16,8 +28,10 @@
       </div>
     </div>
     <divider class="my-6 w-2" />
-    <h4 class="mb-4">Live Captions Theme</h4>
-    <p class="mb-3">Please select a theme for your captions display:</p>
+    <h4 class="mb-4">Full Screen Theme</h4>
+    <p class="mb-3">
+      Please select a theme for your full screen captions display:
+    </p>
     <Dropdown
       class="width400"
       v-model="theme"
@@ -49,7 +63,7 @@ const theme = ref( null )
 const successMessage = ref( false )
 
 const themes = ref( [
-  'Swift', 'Light', 'Dark', 'High Contrast'
+  'Swift', 'Light', 'Dark', 'Contrast'
 ] )
 
 // get the profile for the logged in user

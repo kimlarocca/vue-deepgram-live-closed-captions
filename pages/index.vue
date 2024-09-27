@@ -29,7 +29,7 @@
     </div>
     <div class="grid">
       <div class="col col-12 lg:col-4">
-        <div class="card p-4">
+        <div class="card p-4 h-full">
           <div class="flex align-items-center">
             <div class="rocket-container">
               <client-only>
@@ -45,7 +45,7 @@
           <h3 class="mb-3 mt-3">No Install Needed</h3>
           <p class="mb-4">
             You can run Swift Captions from any browser without installing any
-            software or apps. Just login and start!
+            software or apps.
           </p>
           <h5>
             <nuxt-link to="/signup" class="plain flex align-items-center">
@@ -55,7 +55,7 @@
         </div>
       </div>
       <div class="col col-12 lg:col-4">
-        <div class="card p-4">
+        <div class="card p-4 h-full">
           <div class="flex align-items-center">
             <div class="speech-bubble-container">
               <client-only>
@@ -81,7 +81,7 @@
         </div>
       </div>
       <div class="col col-12 lg:col-4">
-        <div class="card p-4">
+        <div class="card p-4 h-full">
           <div class="flex align-items-center">
             <div class="link-animation-container">
               <client-only>

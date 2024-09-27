@@ -4767,12 +4767,13 @@ $max: 7680px;
 }
 
 .p-tooltip .p-tooltip-text {
-    background: var(--black);
-    color: #ffffff;
-    padding: 1rem;
-    font-weight: 300;
+    background: var(--white);
+    color: var(--black);
+    padding: .75rem 1.25rem;
+    font-weight: normal;
     font-size: 13px !important;
     border-radius: var(--border-radius);
+    border: 1px solid var(--black);
 }
 .p-tooltip.p-tooltip-right .p-tooltip-arrow {
     border-right-color: rgba(97, 97, 97, 0.9);

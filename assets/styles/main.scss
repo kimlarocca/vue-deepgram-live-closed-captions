@@ -8,6 +8,7 @@
 @import 'buttons';
 @import 'cards';
 @import 'transitions';
+@import 'captions';
 
 html,
 body {
@@ -222,4 +223,9 @@ table {
   path {
     fill: var(--black);
   }
+}
+
+.p-button-rounded {
+  width: 48px !important;
+  height: 48px !important;
 }

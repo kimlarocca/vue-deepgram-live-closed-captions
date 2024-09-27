@@ -33,7 +33,6 @@
         label="Login With Email & Password"
         class="w-full"
         type="submit"
-        @click="emit('closePanel')"
       />
     </form>
   </div>
@@ -62,6 +61,7 @@ const login = async () => {
       errorMessage.value = error
     }
   } else {
+    emit( 'closePanel' )
     navigateTo( '/dashboard' )
   }
 }

@@ -12,6 +12,7 @@
           <nuxt-link
             v-if="currentUserProfile?.avatar_url"
             to="/settings"
+            v-tooltip.bottom="'Settings'"
             class="plain white clickable ml-2"
             aria-label="manage profile"
           >
@@ -25,6 +26,7 @@
           <nuxt-link
             v-else
             to="/settings"
+            v-tooltip.bottom="'Settings'"
             class="plain white clickable ml-2"
             aria-label="manage profile"
           >
@@ -39,7 +41,7 @@
             <Button
               v-tooltip.bottom="'Logout'"
               icon="pi pi-sign-out"
-              class="p-button-rounded p-button-lg"
+              class="p-button-rounded"
             />
           </nuxt-link>
         </template>
@@ -68,17 +70,11 @@
 <script setup>
 const currentUser = useSupabaseUser()
 const currentUserProfile = useCurrentUserProfile()
-
-const avatarImage = ref( null )
 const showLoginModal = ref( false )
 </script>
 
 <style lang="scss" scoped>
 header .logo {
   margin-bottom: -5px;
-}
-header .p-button-lg {
-  width: 48px !important;
-  height: 48px !important;
 }
 </style>
