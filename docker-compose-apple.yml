@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  live-caption:
+    image: live-caption
+    container_name: live-caption
+    build:
+      context: .
+      dockerfile: Dockerfile-apple
+    env_file:
+      - .env
+    environment:
+      - DEEPGRAM_API_KEY=$DEEPGRAM_API_KEY
+      - ENVIRONMENT=$ENVIRONMENT
+      - ENV=local
+    ports:
+      - 8088:8080
+    command: ["./scripts/entry.sh"]
+    restart: always
