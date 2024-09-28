@@ -3,7 +3,7 @@
     <div class="grid mb-8">
       <div class="col col-8 md:col-6 flex align-items-center">
         <div>
-          <h1 class="mb-4">From zero to live captions in minutes</h1>
+          <h1 class="mb-4">From zero to captions in minutes</h1>
           <h2 class="mb-5">
             Display instant captions on your presentation, smart tv, or on a
             public link for your viewers
@@ -111,18 +111,24 @@
 </template>
 
 <script setup>
-import { useCurrentUser } from '~/composables/states'
-
-const currentUser = useCurrentUser()
+const currentUser = useSupabaseUser()
 const client = useSupabaseClient()
-const user = await client.auth.getUser()
-const session = await client.auth.getSession()
+const currentUserProfile = useCurrentUserProfile()
 
-// check supabase session for logged in user
-if ( user?.data?.user ) {
-  currentUser.value = user?.data?.user
-} else if ( session?.data?.session?.user ) {
-  currentUser.value = session?.data?.session?.user
+if ( currentUser.value ) {
+  const {
+    data,
+    error
+  } = await client
+    .from( 'profiles' )
+    .select( '*' )
+    .eq( 'id', currentUser.value.id )
+    .single()
+  if ( error ) {
+    console.error( error )
+  } else if ( data ) {
+    currentUserProfile.value = data
+  }
 }
 </script>
 
@@ -139,7 +145,7 @@ h1 {
     font-size: 3rem;
   }
   @media all and (min-width: 1199px) {
-    font-size: 4.5rem;
+    font-size: 4.25rem;
   }
 }
 h2 {

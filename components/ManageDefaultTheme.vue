@@ -4,17 +4,38 @@
     <p class="mb-3">
       Update the default theme for your full screen captions display:
     </p>
-    <div @click="updateProfile('Swift')" class="clickable Swift p-3 mb-3">
-      <h3>Swift</h3>
-    </div>
-    <div @click="updateProfile('Light')" class="clickable Light p-3 mb-3">
-      <h3>Light</h3>
-    </div>
-    <div @click="updateProfile('Dark')" class="clickable Dark p-3 mb-3">
-      <h3>Dark</h3>
-    </div>
-    <div @click="updateProfile('Contrast')" class="clickable Contrast p-3 mb-3">
-      <h3>High Contrast</h3>
+    <div class="grid">
+      <div class="col col-12 md:col-6 lg:col-2">
+        <div @click="updateProfile('Swift')" class="clickable Swift p-3 mb-3">
+          <h3>
+            Swift
+            <i v-if="theme === 'Swift'" class="pi pi-check" />
+          </h3>
+        </div>
+      </div>
+      <div class="col col-12 md:col-6 lg:col-2">
+        <div @click="updateProfile('Light')" class="clickable Light p-3 mb-3">
+          <h3>
+            Light
+            <i v-if="theme === 'Light'" class="pi pi-check" />
+          </h3>
+        </div>
+      </div>
+      <div class="col col-12 md:col-6 lg:col-2">
+        <div @click="updateProfile('Dark')" class="clickable Dark p-3 mb-3">
+          <h3>Dark <i v-if="theme === 'Dark'" class="pi pi-check" /></h3>
+        </div>
+      </div>
+      <div class="col col-12 md:col-6 lg:col-2">
+        <div
+          @click="updateProfile('Contrast')"
+          class="clickable Contrast p-3 mb-3"
+        >
+          <h3>
+            Contrast <i v-if="theme === 'Contrast'" class="pi pi-check" />
+          </h3>
+        </div>
+      </div>
     </div>
   </div>
   <div class="changes-saved-toast">
@@ -71,7 +92,9 @@ const updateProfile = async ( themeName ) => {
 </script>
 
 <style lang="scss" scoped>
-.Light {
+.Swift,
+.Light,
+.Contrast {
   border: 1px solid var(--black);
 }
 </style>

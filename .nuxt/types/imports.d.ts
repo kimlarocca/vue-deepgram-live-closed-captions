@@ -27,7 +27,6 @@ declare global {
   const defineSlots: typeof import('../../node_modules/vue')['defineSlots']
   const effect: typeof import('../../node_modules/vue')['effect']
   const effectScope: typeof import('../../node_modules/vue')['effectScope']
-  const fetchSuggestions: typeof import('../../utils/supabase')['fetchSuggestions']
   const formatCurrency: typeof import('../../utils/helpers')['formatCurrency']
   const formatDate: typeof import('../../utils/helpers')['formatDate']
   const getAppManifest: typeof import('../../node_modules/nuxt/dist/app/composables/manifest')['getAppManifest']
@@ -214,7 +213,6 @@ declare module 'vue' {
     readonly defineSlots: UnwrapRef<typeof import('../../node_modules/vue')['defineSlots']>
     readonly effect: UnwrapRef<typeof import('../../node_modules/vue')['effect']>
     readonly effectScope: UnwrapRef<typeof import('../../node_modules/vue')['effectScope']>
-    readonly fetchSuggestions: UnwrapRef<typeof import('../../utils/supabase')['fetchSuggestions']>
     readonly formatCurrency: UnwrapRef<typeof import('../../utils/helpers')['formatCurrency']>
     readonly formatDate: UnwrapRef<typeof import('../../utils/helpers')['formatDate']>
     readonly getAppManifest: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/manifest')['getAppManifest']>

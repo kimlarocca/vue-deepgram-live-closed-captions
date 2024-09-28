@@ -16,25 +16,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { useCurrentUser } from '~/composables/states'
-
-const currentUser = useCurrentUser()
-const client = useSupabaseClient()
-const user = await client.auth.getUser()
-const session = await client.auth.getSession()
-
-// check supabase session for logged in user
-if ( user?.data?.user ) {
-  currentUser.value = user?.data?.user
-} else if ( session?.data?.session?.user ) {
-  currentUser.value = session?.data?.session?.user
-}
-
-onMounted( () => {
-  if ( currentUser.value ) {
-    window.location.href = '/dashboard'
-  }
-} )
-</script>
