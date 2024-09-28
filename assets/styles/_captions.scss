@@ -1,4 +1,5 @@
 .Swift {
+    transition: var(--transition);
     background: hsla(140, 39%, 78%, 1);
     background: linear-gradient(45deg, #b1ddc0 11%, #ffd1e6 48%, #cce1ff 71%, hsla(0, 0%, 100%, 1) 100%);
     background: -moz-linear-gradient(
@@ -15,19 +16,36 @@
         hsla(215, 100%, 90%, 1) 71%,
         hsla(0, 0%, 100%, 1) 100%
     );
+
+    p,
+    h3 {
+        color: var(--black);
+    }
 }
 
 .Light {
+    transition: var(--transition);
     background: var(--white);
-    color: var(--black);
+    p,
+    h3 {
+        color: var(--black);
+    }
 }
 
 .Dark {
+    transition: var(--transition);
     background: var(--black);
-    color: var(--white);
+    p,
+    h3 {
+        color: var(--white);
+    }
 }
 
 .Contrast {
-    background: #FFFF00;
-    color: var(--black);
+    transition: var(--transition);
+    background: #ffff00;
+    p,
+    h3 {
+        color: var(--black);
+    }
 }

@@ -42,7 +42,6 @@ export default defineNuxtRouteMiddleware( async () => {
   if ( !currentUser.value ) {
     return navigateTo( '/' )
   } else if ( !currentUserProfile.value ) {
-    console.log( 'getting profile' )
     getProfile()
   }
 } )

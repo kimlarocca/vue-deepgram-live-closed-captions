@@ -8,6 +8,8 @@
     <h1 class="mb-5">Account Settings</h1>
     <manage-user-profile />
     <divider class="my-6 w-2" />
+    <manage-default-theme />
+    <divider class="my-6 w-2" />
     <supabase-upload-image :image="avatarImage || ''" />
     <divider class="my-6 w-2" />
     <div id="password">

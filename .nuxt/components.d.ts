@@ -4,6 +4,7 @@ type IslandComponent<T extends DefineComponent> = T & DefineComponent<{}, {refre
 interface _GlobalComponents {
       'Login': typeof import("../components/Login.vue")['default']
     'Logo': typeof import("../components/Logo.vue")['default']
+    'ManageDefaultTheme': typeof import("../components/ManageDefaultTheme.vue")['default']
     'ManageUserProfile': typeof import("../components/ManageUserProfile.vue")['default']
     'TheFooter': typeof import("../components/TheFooter.vue")['default']
     'TheHeader': typeof import("../components/TheHeader.vue")['default']
@@ -39,6 +40,7 @@ interface _GlobalComponents {
     'NuxtRouteAnnouncer': IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
       'LazyLogin': typeof import("../components/Login.vue")['default']
     'LazyLogo': typeof import("../components/Logo.vue")['default']
+    'LazyManageDefaultTheme': typeof import("../components/ManageDefaultTheme.vue")['default']
     'LazyManageUserProfile': typeof import("../components/ManageUserProfile.vue")['default']
     'LazyTheFooter': typeof import("../components/TheFooter.vue")['default']
     'LazyTheHeader': typeof import("../components/TheHeader.vue")['default']
@@ -80,6 +82,7 @@ declare module 'vue' {
 
 export const Login: typeof import("../components/Login.vue")['default']
 export const Logo: typeof import("../components/Logo.vue")['default']
+export const ManageDefaultTheme: typeof import("../components/ManageDefaultTheme.vue")['default']
 export const ManageUserProfile: typeof import("../components/ManageUserProfile.vue")['default']
 export const TheFooter: typeof import("../components/TheFooter.vue")['default']
 export const TheHeader: typeof import("../components/TheHeader.vue")['default']
@@ -115,6 +118,7 @@ export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components
 export const NuxtRouteAnnouncer: IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
 export const LazyLogin: typeof import("../components/Login.vue")['default']
 export const LazyLogo: typeof import("../components/Logo.vue")['default']
+export const LazyManageDefaultTheme: typeof import("../components/ManageDefaultTheme.vue")['default']
 export const LazyManageUserProfile: typeof import("../components/ManageUserProfile.vue")['default']
 export const LazyTheFooter: typeof import("../components/TheFooter.vue")['default']
 export const LazyTheHeader: typeof import("../components/TheHeader.vue")['default']

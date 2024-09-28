@@ -27,18 +27,6 @@
         <Button icon="pi pi-save" @click="updateProfile" />
       </div>
     </div>
-    <divider class="my-6 w-2" />
-    <h4 class="mb-4">Full Screen Theme</h4>
-    <p class="mb-3">
-      Please select a default theme for your full screen captions display:
-    </p>
-    <Dropdown
-      class="width400"
-      v-model="theme"
-      :options="themes"
-      placeholder="Select a theme"
-      @change="updateProfile"
-    />
   </div>
   <div class="changes-saved-toast">
     <Message
@@ -59,12 +47,7 @@ const supabase = useSupabaseClient()
 
 const fullName = ref( null )
 const profile = ref( [] )
-const theme = ref( null )
 const successMessage = ref( false )
-
-const themes = ref( [
-  'Swift', 'Light', 'Dark', 'Contrast'
-] )
 
 // get the profile for the logged in user
 let { data } = await supabase
@@ -75,7 +58,6 @@ let { data } = await supabase
 if ( data ) {
   profile.value = data
   fullName.value = data[ 0 ]?.full_name
-  theme.value = data[ 0 ]?.theme
 }
 
 const updateProfile = async () => {
@@ -86,7 +68,6 @@ const updateProfile = async () => {
       id: currentUser.value.id,
       updated_at: new Date().toISOString(),
       full_name: fullName.value,
-      theme: theme.value,
     } )
     .match( { id: currentUser.value.id } )
   if ( error ) {

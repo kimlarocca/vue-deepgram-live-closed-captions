@@ -6,17 +6,9 @@
       </Head>
     </Html>
     <transition name="slide-fade">
-      <div
-        v-if="fullScreen"
-        class="full-screen p-4"
-        :class="currentUserProfile?.theme"
-      >
+      <div v-if="fullScreen" class="full-screen p-4" :class="theme">
         <div v-if="!hideCaptions" class="mt-5 captions">
-          <p
-            v-for="transcript in transcripts"
-            :key="transcript"
-            :class="currentUserProfile?.theme"
-          >
+          <p v-for="transcript in transcripts" :key="transcript">
             {{ transcript }}
           </p>
         </div>
@@ -91,12 +83,20 @@
         v-tooltip.top="'Hide Captions'"
       />
       <Button
-        @click="navigateTo('/settings')"
+        @click="showThemes = !showThemes"
         icon="pi pi-cog"
         class="p-button-rounded ml-2"
-        v-tooltip.top="'Theme Settings'"
+        v-tooltip.top="'Change Theme'"
       />
     </div>
+    <Dialog
+      v-model:visible="showThemes"
+      modal
+      :style="{ width: '50%' }"
+      :dismissable-mask="true"
+    >
+      <ManageDefaultTheme @theme-updated="updateTheme" />
+    </Dialog>
   </div>
 </template>
 
@@ -111,6 +111,8 @@ const isStopped = ref( false )
 const isListening = ref( false )
 const fullScreen = ref( false )
 const hideCaptions = ref( false )
+const showThemes = ref( false )
+const theme = ref( currentUserProfile?.theme ?? 'Swift' )
 let mediaRecorder = null
 let socket = null
 let stream = null
@@ -175,6 +177,11 @@ const handleResponse = ( message ) => {
 const startNewSession = async () => {
   // there's probably a better way to do this
   location.reload()
+}
+
+const updateTheme = async ( name ) => {
+  console.log( 'updateTheme', name )
+  theme.value = name
 }
 
 onMounted( async () => {
@@ -243,5 +250,12 @@ onMounted( async () => {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.dashboard .p-dialog,
+.dashboard .p-dropdown,
+.dashboard .p-dialog-mask {
+  // position: fixed;
+  z-index: 9999;
 }
 </style>
