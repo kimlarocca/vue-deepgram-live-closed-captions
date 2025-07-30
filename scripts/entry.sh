@@ -2,4 +2,8 @@
 
 set -e
 echo "---Starting Entry Script,ENV=$ENV---"
-supervisord -c /etc/nginx/supervisord.conf
+echo "Current user: $(whoami)"
+echo "User ID: $(id)"
+
+# Start supervisord as nuxt user
+exec supervisord -c /etc/nginx/supervisord.conf

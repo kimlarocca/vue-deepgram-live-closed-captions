@@ -101,106 +101,106 @@
 </template>
 
 <script setup>
-definePageMeta( {
-  middleware: 'auth',
-} )
+definePageMeta({
+  middleware: "auth",
+});
 
-const currentUserProfile = useCurrentUserProfile()
-const isStarted = ref( false )
-const isStopped = ref( false )
-const isListening = ref( false )
-const fullScreen = ref( false )
-const hideCaptions = ref( false )
-const showThemes = ref( false )
-const theme = ref( currentUserProfile?.theme ?? 'Swift' )
-let mediaRecorder = null
-let socket = null
-let stream = null
-const transcripts = ref( [ 'hello this is a test' ] )
+const currentUserProfile = useCurrentUserProfile();
+const isStarted = ref(false);
+const isStopped = ref(false);
+const isListening = ref(false);
+const fullScreen = ref(false);
+const hideCaptions = ref(false);
+const showThemes = ref(false);
+const theme = ref(currentUserProfile?.theme ?? "Swift");
+let mediaRecorder = null;
+let socket = null;
+let stream = null;
+const transcripts = ref(["hello this is a test"]);
 
 const start = async () => {
-  transcripts.value = []
-  isStarted.value = true
-  isListening.value = true
-  socket.onopen = startStreaming()
-  socket.onerror = ( error ) => console.error( 'WebSocket error:', error )
-  socket.onmessage = ( event ) => {
+  transcripts.value = [];
+  isStarted.value = true;
+  isListening.value = true;
+  socket.onopen = startStreaming();
+  socket.onerror = (error) => console.error("WebSocket error:", error);
+  socket.onmessage = (event) => {
     const message = event.data;
-    handleResponse( message )
+    handleResponse(message);
   };
-}
+};
 
 const pause = async () => {
-  isListening.value = false
-  mediaRecorder.pause()
-}
+  isListening.value = false;
+  mediaRecorder.pause();
+};
 
 const resume = async () => {
-  isListening.value = true
-  mediaRecorder.resume()
-}
+  isListening.value = true;
+  mediaRecorder.resume();
+};
 
 const stop = async () => {
-  isListening.value = false
-  isStopped.value = true
-  mediaRecorder.stop()
-  socket.close()
-}
+  isListening.value = false;
+  isStopped.value = true;
+  mediaRecorder.stop();
+  socket.close();
+};
 
 const startStreaming = async () => {
-  mediaRecorder.start( 200 );
+  mediaRecorder.start(200);
 
-  mediaRecorder.addEventListener( 'dataavailable', ( event ) => {
+  mediaRecorder.addEventListener("dataavailable", (event) => {
     // Handle the recorded data
-    if ( event.data.size > 0 && socket.readyState == 1 ) {
-      socket.send( event.data )
+    if (event.data.size > 0 && socket.readyState == 1) {
+      socket.send(event.data);
     }
-  } )
+  });
 
-  mediaRecorder.addEventListener( 'stop', ( event ) => {
-    console.log( 'Recorder stopped: ', event )
-  } )
+  mediaRecorder.addEventListener("stop", (event) => {
+    console.log("Recorder stopped: ", event);
+  });
 
-  mediaRecorder.addEventListener( 'error', ( event ) => {
-    console.error( 'Recorder error:', event.error );
-  } )
-}
+  mediaRecorder.addEventListener("error", (event) => {
+    console.error("Recorder error:", event.error);
+  });
+};
 
-const handleResponse = ( message ) => {
-  const received = JSON.parse( message )
-  const transcript = received?.channel?.alternatives?.[ 0 ]?.transcript
-  if ( transcript ) {
-    transcripts.value.push( transcript )
+const handleResponse = (message) => {
+  const received = JSON.parse(message);
+  const transcript = received?.channel?.alternatives?.[0]?.transcript;
+  if (transcript) {
+    transcripts.value.push(transcript);
   }
-}
+};
 
 const startNewSession = async () => {
   // there's probably a better way to do this
-  location.reload()
-}
+  location.reload();
+};
 
-const updateTheme = async ( name ) => {
-  console.log( 'updateTheme', name )
-  theme.value = name
-}
+const updateTheme = async (name) => {
+  console.log("updateTheme", name);
+  theme.value = name;
+};
 
-onMounted( async () => {
-  // why isn't this working!
-  // const deepgramKey = await useFetch( '/api/deepgram/' )
-  // await nextTick()
-  // console.log( "deepgramKey", deepgramKey )
-  const deepgramKey = 'deepgram_key_goes_here'
-  const deepgramUrl = 'wss://api.deepgram.com/v1/listen?language=en-US'
-
-  socket = new WebSocket( deepgramUrl, [ 'token', deepgramKey ] )
-  stream = await navigator.mediaDevices.getUserMedia( { audio: true } ).catch( error => alert( error ) )
-
-  if ( !MediaRecorder.isTypeSupported( 'audio/webm' ) ) {
-    alert( 'Sorry! You are using an unsupported browser.' )
+onMounted(async () => {
+  try {
+    const { data } = await useFetch("http://localhost:3000/api/deepgram");
+    const deepgramKey = data.value; // Assuming the key is in the 'value' property
+    const deepgramUrl = "wss://api.deepgram.com/v1/listen?language=en-US";
+    socket = new WebSocket(deepgramUrl, ["token", deepgramKey]);
+    stream = await navigator.mediaDevices
+      .getUserMedia({ audio: true })
+      .catch((error) => alert(error));
+    if (!MediaRecorder.isTypeSupported("audio/webm")) {
+      alert("Sorry! You are using an unsupported browser.");
+    }
+    mediaRecorder = new MediaRecorder(stream, { mimeType: "audio/webm" });
+  } catch (error) {
+    console.error("Error initializing WebSocket or media devices:", error);
   }
-
-  mediaRecorder = new MediaRecorder( stream, { mimeType: 'audio/webm' } )
-} )
+});
 </script>
 
 <style lang="scss">

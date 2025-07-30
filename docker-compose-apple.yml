@@ -1,19 +1,43 @@
-version: "3"
+name: live-caption-app-apple
 
 services:
   live-caption:
-    image: live-caption
-    container_name: live-caption
+    image: live-caption:latest-arm64
+    container_name: live-caption-apple
     build:
       context: .
       dockerfile: Dockerfile-apple
+      args:
+        - DEEPGRAM_API_KEY
+        - ENVIRONMENT
+        - BFF_URL
+      platforms:
+        - linux/arm64
     env_file:
       - .env
     environment:
-      - DEEPGRAM_API_KEY=$DEEPGRAM_API_KEY
-      - ENVIRONMENT=$ENVIRONMENT
-      - ENV=local
+      NODE_ENV: production
+      TZ: America/New_York
+      ENV: local
     ports:
-      - 8088:8080
-    command: ["./scripts/entry.sh"]
-    restart: always
+      - "127.0.0.1:8088:8080"
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    read_only: false
+    tmpfs:
+      - /tmp
+      - /var/run/nginx
+      - /var/log/nginx
+      - /run
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
